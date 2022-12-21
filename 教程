@@ -1,0 +1,51 @@
+DISCLAIMER I DID NOT MAKE ANY OF THESE FILES OR PROGRAMS.
+ 
+Plug your M1 into your computer with a USB cable
+ 
+go to https://github.com/bkerler/edl download the file to your desktop and extract it
+ 
+download microsft C++ build tools to your desktop https://visualstudio.microsoft.com/visual-cpp-build-tools/
+You may need to run the installer once but not install anything to make the other steps work
+ 
+install python from python.org/downloads/ and at the fist setup prompt chose add python to PATH then continue the installation
+ 
+download putty from https://www.putty.org/
+ 
+ 
+ 
+Open Command prompt and type (hit enter after every line)
+ 
+cd Desktop
+ 
+vs_buildtools.exe --norestart --passive --downloadThenInstall --includeRecommended --add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Workload.MSBuildTools
+ 
+then let that finish downloading and installing.
+ 
+go back to your Command prompt window and type
+ 
+cd edl-master
+ 
+pip3 install -r requirements.txt
+ 
+cd edlclient
+ 
+cd tools
+ 
+ 
+open putty and type 192.168.1.1 (or if you changed the ip of the M1 use that) in the Host name and 5510 in the port.
+Select telnet then press Open
+once the window opens type AT!OPENLOCK? and hit enter
+The response you get out of that should look something like BE96CBBEE0829BCA
+ 
+copy that output and go back to your Command prompt window and type py sierrakeygen.py -l BE96CBBEE0829BCA -d MDM9x40 (replace BE96CBBEE0829BCA with the output from the Putty window)
+ 
+then go back to the Putty window and type AT!OPENLOCK=[BE96CBBEE0829BCA] (again replace BE96CBBEE0829BCA with your number)
+ 
+type AT!NVIMEIUNLOCK
+ 
+then type AT!NVENCRYPTIMEI=12,34,56,78,90,12,34,52 (replace the numbers with the numbers from your IMEI)
+ 
+then type AT!RESET
+ 
+The M1 should reboot and your IMEI should be changed.
+ 
